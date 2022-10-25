@@ -1,0 +1,30 @@
+{
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.0",
+    "celebrate": "^15.0.1",
+    "express": "^4.18.1",
+    "express-winston": "^4.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.6.1",
+    "validator": "^13.7.0",
+    "winston": "^3.8.2"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "lint": "npx eslint .",
+    "dev": "nodemon app.js",
+    "test": "jest",
+    "engine": "node server.js"
+  },
+  "devDependencies": {
+    "eslint": "^8.24.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "jest": "^29.2.1",
+    "nodemon": "^2.0.20",
+    "supertest": "^6.3.0",
+    "winston": "^3.8.2"
+  }
+}
