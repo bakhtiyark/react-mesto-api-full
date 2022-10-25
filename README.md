@@ -14,7 +14,7 @@
 - Деплой на Яндекс.облаке
 
 
-### For autotesting purposes
-IP 51.250.1.171
-Frontend https://bakhtiyarkpr.nomoredomains.icu
-Backend https://api.bakhtiyarkpr.nomoredomains.icu
+## For autotesting purposes
+- IP 51.250.1.171
+- Frontend https://bakhtiyarkpr.nomoredomains.icu
+- Backend https://api.bakhtiyarkpr.nomoredomains.icu
