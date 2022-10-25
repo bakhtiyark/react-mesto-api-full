@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.4214d4d1.css",
+    "main.js": "/static/js/main.ffdbc4fd.js",
+    "static/js/787.5530211c.chunk.js": "/static/js/787.5530211c.chunk.js",
+    "static/media/Inter-Bold.woff": "/static/media/Inter-Bold.93c1301bd9f486c573b3.woff",
+    "static/media/Inter-Black.woff": "/static/media/Inter-Black.c6938660eec019fefd68.woff",
+    "static/media/Inter-Regular.woff": "/static/media/Inter-Regular.8c206db99195777c6769.woff",
+    "static/media/Inter-Bold.woff2": "/static/media/Inter-Bold.ec64ea577b0349e055ad.woff2",
+    "static/media/Inter-Black.woff2": "/static/media/Inter-Black.15ca31c0a2a68f76d2d1.woff2",
+    "static/media/Inter-Regular.woff2": "/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
+    "static/media/header-logo.svg": "/static/media/header-logo.bbe2a6eafac19c3d031c272c424875ca.svg",
+    "static/media/heart-icon.svg": "/static/media/heart-icon.e3b9ba5840ebe97bc077.svg",
+    "index.html": "/index.html",
+    "static/media/failure-icon.svg": "/static/media/failure-icon.d0f413bf3805a1fd4973010d44b06f2f.svg",
+    "static/media/delete-button.svg": "/static/media/delete-button.ce3b64935accf9b8212e.svg",
+    "static/media/success-icon.svg": "/static/media/success-icon.a9eb6caf1da3ff48b215fb1dd9477d74.svg",
+    "static/media/heart-icon-active.svg": "/static/media/heart-icon-active.35948469632d0421d697.svg",
+    "static/media/mobile-slider.svg": "/static/media/mobile-slider.ccf7020248ca1ffd1496.svg",
+    "static/media/edit-button.svg": "/static/media/edit-button.f0dd9c51cf799b8b82d2.svg",
+    "static/media/close-icon.svg": "/static/media/close-icon.039f1f5203f653b4bacd.svg",
+    "static/media/plus-icon.svg": "/static/media/plus-icon.bed8c136e13907f5eefb.svg",
+    "main.4214d4d1.css.map": "/static/css/main.4214d4d1.css.map",
+    "main.ffdbc4fd.js.map": "/static/js/main.ffdbc4fd.js.map",
+    "787.5530211c.chunk.js.map": "/static/js/787.5530211c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4214d4d1.css",
+    "static/js/main.ffdbc4fd.js"
+  ]
+}
