@@ -1,0 +1,22 @@
+.popup_closed{  
+  animation: fadeOut 0.7s linear;
+  visibility: hidden;
+}
+
+@keyframes fadeOut {
+    0% {
+        visibility: visible;
+      opacity: 1;
+    }
+  
+  33% {
+    opacity: 0.66;
+  }
+  66% {
+    opacity: 0.33;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

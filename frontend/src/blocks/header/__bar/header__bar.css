@@ -1,0 +1,14 @@
+.header__bar {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+
+@media screen and (max-width: 767px) {
+    .header__bar {
+        flex-direction: column;
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+}

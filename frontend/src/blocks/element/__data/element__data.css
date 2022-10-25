@@ -1,0 +1,10 @@
+.element__data {
+    margin: 0;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: black;
+    align-items: baseline;
+    padding: 22px 15px 28px 21px;
+}

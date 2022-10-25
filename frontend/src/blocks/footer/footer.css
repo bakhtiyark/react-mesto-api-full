@@ -1,0 +1,18 @@
+.footer {
+    max-width: calc(100% - 2 * 200px);
+    margin: 45px auto;
+    padding-bottom: 40px;
+}
+
+@media screen and (max-width: 1024px) {
+    .footer {
+        max-width: calc(100% - 2 * 100px);
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .footer {
+        max-width: calc(100% - 2 * 19px);
+        flex-direction: column;
+    }
+}

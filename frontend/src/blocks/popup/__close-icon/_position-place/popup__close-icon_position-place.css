@@ -1,0 +1,10 @@
+.popup__close-icon_position-place {
+    top: -10px;
+    right: -40px;
+}
+@media screen and (max-width: 680px) {
+    .popup__close-icon_position-place {
+        top: -16px;
+        right: 0px;
+    }
+}

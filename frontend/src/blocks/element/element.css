@@ -1,0 +1,15 @@
+.element {
+    max-height: 361px;
+    max-width: 282px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    position: relative;
+}
+
+@media screen and (max-width: 767px) {
+    .element {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,17 @@
+.profile__avatar-replace {
+  margin: 0;
+  padding: 0;
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  left:0px;
+  background: rgba(0, 0, 0, 0.8) url('../../../images/edit-button.svg') center / 26px no-repeat;
+  cursor: pointer;
+  opacity: 0;
+  border-radius: 50%;
+  outline: 2px solid black;
+}
+
+.profile__avatar-replace:hover {
+  opacity: 1;
+}

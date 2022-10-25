@@ -1,0 +1,12 @@
+.profile__avatar-container {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    grid-area: avatar;
+  }
+  
+  @media (max-width: 740px) {
+    .profile__avatar-container {
+      margin: 0 auto;
+    }
+  }
