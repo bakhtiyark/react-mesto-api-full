@@ -1,6 +1,7 @@
 // Модули
 const express = require('express');
 const mongoose = require('mongoose');
+const path = require('path');
 
 const { celebrate, errors, Joi } = require('celebrate');
 const bodyParser = require('body-parser');
@@ -26,6 +27,7 @@ app.use(bodyParser.urlencoded({
   extended: true,
 }));
 
+app.use(express.static(path.join(__dirname, 'public')));
 // signin
 
 app.post('/signin', celebrate({
