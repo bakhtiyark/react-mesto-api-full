@@ -3,6 +3,9 @@ const bcrypt = require('bcryptjs'); // импортируем bcrypt
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
+// env
+const { JWT_SECRET, NODE_ENV } = process.env;
+
 // Ошибки
 const AuthorizationError = require('../errors/AuthorizationError');
 const NotFound = require('../errors/NotFound');
@@ -127,7 +130,7 @@ const login = (req, res, next) => {
         if (!isValidPassword) {
           return next(new AuthorizationError('Неверный логин или пароль'));
         }
-        const token = jwt.sign({ _id: user._id }, 'some-secret-key', { expiresIn: '7d' });
+        const token = jwt.sign({ _id: user._id }, `${NODE_ENV === 'production' ? JWT_SECRET : 'placeholder'}`, { expiresIn: '7d' });
         return res.status(200).send({ token });
       });
     })

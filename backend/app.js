@@ -1,16 +1,22 @@
+require('dotenv').config();
 // Модули
 const express = require('express');
 const mongoose = require('mongoose');
-const path = require('path');
 
 const { celebrate, errors, Joi } = require('celebrate');
 const bodyParser = require('body-parser');
+
+// Константы
+
 const { regexpLink } = require('./utils/constants');
 
-const auth = require('./middlewares/auth');
 const { login, createUser } = require('./controllers/users');
 
+// Middlewares
+
 const errorHandler = require('./middlewares/error');
+const cors = require('./middlewares/cors');
+const auth = require('./middlewares/auth');
 
 // Порт
 const { PORT = 3000 } = process.env;
@@ -27,7 +33,6 @@ app.use(bodyParser.urlencoded({
   extended: true,
 }));
 
-app.use(express.static(path.join(__dirname, 'public')));
 // signin
 
 app.post('/signin', celebrate({
@@ -49,6 +54,8 @@ app.post('/signup', celebrate({
 }), createUser);
 
 // Роутинг
+app.use(cors);
+
 app.use('/users', auth, require('./routes/users'));
 app.use('/cards', auth, require('./routes/cards'));
 
@@ -64,7 +71,6 @@ app.get('/crash-test', () => {
 });
 
 app.use(errors());
-// app.use(errorLogger); // подключаем логгер ошибок
 
 app.use(errorHandler());
 
