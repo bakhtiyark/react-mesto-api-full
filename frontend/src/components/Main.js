@@ -35,7 +35,6 @@ export default function Main(props) {
               likes={card.likes}
               card={card}
               onCardClick={props.onCardClick}
-              ownerId={card.owner._id}
               onCardLike={props.onCardLike}
               onCardDelete={props.onCardDelete}
             />

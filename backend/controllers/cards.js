@@ -60,7 +60,7 @@ const likeCard = (req, res, next) => {
     { $addToSet: { likes: req.user._id } },
     { new: true },
   ).orFail(() => { throw new NotFound('Карточка с указанным ID не найдена'); })
-    .then((card) => res.send({ data: card }))
+    .then((card) => res.send(card))
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new NotFound('Карточка с указанным ID не найдена'));

@@ -55,7 +55,7 @@ function App() {
 
   useEffect(() => {
     handleTokenValidation()
-    if (!loggedIn) {
+    if (loggedIn) {
       api.getAllData()
         .then(([data, user]) => {
           setCards(data)
@@ -63,8 +63,13 @@ function App() {
         })
         .catch(err => console.log(err))
     }
-  })
+  }, [loggedIn])
 
+  useEffect(() => {
+    if(loggedIn) {
+      history.push('/')
+    }
+  }, [loggedIn, history])
 
   // Открытие соответствующих попапов
   function replaceAvatar() {
@@ -94,10 +99,10 @@ function App() {
   }
 
   //Установка данных пользователей
-  function handleUpdateUser(data) {
+  function handleUpdateUser({name, about}) {
     setIsSubmitting(true)
-    api.setUserInfo(data).then((data) => {
-      setCurrentUser(data)
+    api.setUserInfo({name, about}).then((user) => {
+      setCurrentUser(user)
     }).then(() => closePopups()).catch((err) => {
       console.log(err);
     }).finally(() => {
@@ -106,9 +111,9 @@ function App() {
   }
 
   // Добавление места
-  function handleAddPlaceSubmit(data) {
+  function handleAddPlaceSubmit({name, link}) {
     setIsSubmitting(true)
-    api.createCard(data).then((newCard) => {
+    api.createCard({name, link}).then((newCard) => {
       setCards([newCard, ...cards]);
     }).then(() => closePopups()).catch((err) => {
       console.log(err);
@@ -118,25 +123,28 @@ function App() {
   }
 
   //Аптейт аватара
-  function handleAvatarUpdate(data) {
+  function handleAvatarUpdate({avatar}) {
     setIsSubmitting(true)
-    api.setUserAvatar(data).then((link) => {
-      setCurrentUser(link)
-    }).then(() => closePopups()).catch((err) => {
+    api.setUserAvatar(avatar)
+      .then((user) => {
+        setCurrentUser(user)
+    })
+      .then(() => closePopups())
+      .catch((err) => {
       console.log(err);
     }).finally(() => {
       setIsSubmitting(false)
     });
   }
-
   // Лайканье
 
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some(i => i === currentUser._id);
 
     // Отправляем запрос в API и получаем обновлённые данные карточки
-    api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
+    api.changeLikeCardStatus(card._id, isLiked)
+    .then((newCard) => {
       setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
     }).catch((err) => {
       console.log(err);
@@ -166,8 +174,7 @@ function App() {
         .then((res) => {
           if (res) {
             setLoggedIn(true)
-            setUserEmail(res.data.email)
-            history.push("/")
+            setUserEmail(res.email)
           }
         }).catch((err) => {
           console.log(err)
@@ -293,7 +300,7 @@ function App() {
 
         <script type="module" src="./pages/index.js"></script>
       </CurrentUserContext.Provider>
-    </TranslationContext.Provider>
+      </TranslationContext.Provider>
   );
 }
 

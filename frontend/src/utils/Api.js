@@ -1,16 +1,24 @@
 export class Api {
-  constructor({ baseUrl, token }) {
+  constructor({ baseUrl, headers }) {
     this._url = baseUrl
-    this._token = token
+    this._headers = headers
+  }
+  _getHeaders() {
+    const token = localStorage.getItem('token');
+    return {
+      'Authorization': `Bearer ${token}`,
+      ...this._headers,
+    };
   }
 
   // Проверка на ошибку
-  _errorCheck = res => {
+  /* _errorCheck = res => {
     if (res.ok) {
       return res.json()
     }
     return Promise.reject(new Error("Ошибка " + res.status))
   }
+  */
 
   //Получение всех данных
   getAllData() {
@@ -21,9 +29,14 @@ export class Api {
   getInitialCards() {
     return fetch(`${this._url}/cards`,
       {
-        headers: this._token
+        headers: this._getHeaders(),
       })
-      .then(res => this._errorCheck(res));
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .catch((err) => console.log(err));
   }
 
   //Добавление карт
@@ -31,66 +44,90 @@ export class Api {
     return fetch(`${this._url}/cards`,
       {
         method: 'POST',
-        headers: this._token,
+        headers: this._getHeaders(),
         body: JSON.stringify({
           name: card.name,
           link: card.link
         })
-      }).then(res => this._errorCheck(res))
+      }).then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .catch((err) => console.log(err));
   }
 
   //Получение данных о пользователе
   getUserInfo() {
     return fetch(`${this._url}/users/me`, {
-      headers: this._token,
+      headers: this._getHeaders(),
     })
-      .then(res => this._errorCheck(res));
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+    })
+    .catch((err) => console.log(err));;
   }
 
   //Обновление пользователя
-  setUserInfo(data) {
+  setUserInfo({name, about}) {
     return fetch(`${this._url}/users/me`,
       {
         method: 'PATCH',
-        headers: this._token,
+        headers: this._getHeaders(),
         body: JSON.stringify({
-          name: data.name,
-          about: data.about
+          name:name,
+          about:about
         })
-      }).then(res => this._errorCheck(res))
+      }).then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .catch((err) => console.log(err));
   }
+  
   //Установка аватара
-  setUserAvatar(link) {
+  setUserAvatar(avatar) {
     return fetch(`${this._url}/users/me/avatar`,
       {
         method: 'PATCH',
-        headers: this._token,
-        body: JSON.stringify(link)
-      }).then(res => this._errorCheck(res))
+        headers: this._getHeaders(),
+        body: JSON.stringify({avatar})
+      }).then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .catch((err) => console.log(err));
   }
 
   //Комбинированный метод для лайканья/снятия лайка
   changeLikeCardStatus(id, state){
     return fetch(`${this._url}/cards/${id}/likes`,
     {
-      method: (state) ? "PUT" :'DELETE',
-      headers: this._token
-    }).then(res => this._errorCheck(res))
+      method: state ? 'DELETE': "PUT" ,
+      headers: this._getHeaders(),
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+    })
+    .catch((err) => console.log(err));
   }
-
   //Удаление карточки
   deleteCard(id) {
     return fetch(`${this._url}/cards/${id}`, {
       method: "DELETE",
-      headers: this._token
+      headers: this._getHeaders()
     }).then(this._errorCheck).catch(err => console.log(err))
   }
 }
 
 export const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-45',
-  token: {
-    authorization: "c4df37c2-ee37-468d-b548-ff18699e058a",
-    'Content-Type': 'application/json'
+  baseUrl: 'https://api.bakhtiyarkpr.nomoredomains.icu',
+  headers: {
+    "Content-Type": "application/json",
   }
 })

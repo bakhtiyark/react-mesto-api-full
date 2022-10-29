@@ -16,19 +16,19 @@ function Header({ onSignOut, userEmail }) {
       <Switch>
         <Route path="/sign-up">
           <Link className="auth__link auth__link_location-header" to="/sign-up">
-            {translation.registerTitle}
+            Зарегистрироваться
           </Link>
         </Route>
         <Route path="/sign-in">
           <Link className="auth__link auth__link_location-header" to="/sign-in">
-            {translation.authTitle}
+            Войти
           </Link>
         </Route>
         <Route path="/">
           <div className="header__bar" id="header__bar">
             <span className='auth__email header__bar-item'>{userEmail || ''}</span>
             <Link onClick={onSignOut} className="auth__link auth__link_location-header header__bar-item" to="/sign-in">
-              {translation.signOut}
+            Выйти
             </Link>
           </div>
         </Route>
