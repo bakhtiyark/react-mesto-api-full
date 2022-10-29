@@ -14,12 +14,12 @@ function Header({ onSignOut, userEmail }) {
       <button type="button" className="header__bar_mobile-button" id="navbar-toggle" onClick={toggleList}></button>
       <img src={logo} alt="Логотип Место" className="header__logo" />
       <Switch>
-        <Route path="/sign-up">
+        <Route path="/sign-in">
           <Link className="auth__link auth__link_location-header" to="/sign-up">
             Зарегистрироваться
           </Link>
         </Route>
-        <Route path="/sign-in">
+        <Route path="/sign-up">
           <Link className="auth__link auth__link_location-header" to="/sign-in">
             Войти
           </Link>

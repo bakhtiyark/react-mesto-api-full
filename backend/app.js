@@ -42,7 +42,6 @@ app.get('/crash-test', () => {
 
 // signin
 app.use(requestLogger);
-app.use(errorLogger);
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
@@ -76,6 +75,7 @@ app.use('/*', (req, res, next) => {
   next(new NotFound('Запрашиваемая страница не найдена'));
 });
 
+app.use(errorLogger);
 app.use(errors());
 
 app.use(errorHandler);

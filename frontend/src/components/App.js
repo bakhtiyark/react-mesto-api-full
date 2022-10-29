@@ -211,15 +211,14 @@ function App() {
           localStorage.setItem('token', res.token)
           setUserEmail(email)
           setLoggedIn(true)
-        } else {
-          setMessage({
-            imgInfo: failureIcon,
-            text: 'Что-то пошло не так! Попробуйте ещё раз.'
-          })
-          setIsInfoTooltipPopupOpen(true)
-        }
+        } 
       })
-      .catch((err) => console.log(err))
+      .catch(() => {
+        setMessage({
+        imgInfo: failureIcon,
+        text: 'Что-то пошло не так! Попробуйте ещё раз.'
+      })
+      setIsInfoTooltipPopupOpen(true)})
   }
 
   //Выход из аккаунта
